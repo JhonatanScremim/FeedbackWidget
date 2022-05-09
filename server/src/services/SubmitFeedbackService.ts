@@ -36,7 +36,9 @@ export class SubmitFeedbackService{
     
         this.mailHelper.sendMail({
             subject: "Novo Feedback",
-            body: `<p>Tipo do feedback: ${req.type}, commentario: ${req.comment}</p>`
+            body: [`<p>Tipo do feedback: ${req.type}, commentario: ${req.comment}</p>`,
+            req.screenshot ? `<img src="${req.screenshot}" />` : ``
+            ].join("\n")
         });
     }
 }
